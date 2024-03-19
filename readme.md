@@ -6,8 +6,7 @@ Foreword by Gregory D. Benson
 September 2013  ISBN 9781617290756  432 pages
 
 ## branchs
-1- add style
-2- add javascript sem jquery (no livro é usado jquery, mas atualmente o jsvanilha suporta eventos que em 2013 era somente possivel com jquery.) e comentarios em portugués para ajudar iniciantes
+verifiquem as branch para verificar as evoluções
 
 
 
