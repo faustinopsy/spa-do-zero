@@ -1,8 +1,8 @@
-// main.js
 import { createSpaContainer } from './componentes/spaContainer.js';
-import { createSpaSlider } from './componentes/spaSlider.js';
 import { createLayoutElements } from './componentes/spaLayout.js';
+import { createSpaSlider } from './componentes/spaSlider.js';
 import { createModal } from './componentes/spaModal.js';
+import { ApiLocalStorage } from './componentes/ApiLocalStorage.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const configMap = {
@@ -13,23 +13,31 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const spaContainer = createSpaContainer('spa');
+    createLayoutElements(spaContainer);
     const spaSlider = createSpaSlider(configMap);
     spaContainer.appendChild(spaSlider);
-
-    createLayoutElements(spaContainer); 
 
     const modal = createModal();
     spaContainer.appendChild(modal);
 
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
 
-    window.addEventListener('hashchange', function() {
-        if (window.location.hash === '#modal') {
+    function handleHashChange() {
+        const hash = window.location.hash;
+        if (hash === '#modal') {
             modal.show();
-        }
-    });
+        } 
 
+        if (hash === '#slider') {
+            spaSlider.show()
+        } 
+    }
 
-    if (window.location.hash === '#modal') {
+    if (ApiLocalStorage.getItem('modalVisible', false)) {
         modal.show();
+    }
+    if (ApiLocalStorage.getItem('sliderState', true)) {
+        spaSlider.show();
     }
 });

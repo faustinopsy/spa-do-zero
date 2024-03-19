@@ -1,6 +1,9 @@
+import { ApiLocalStorage } from './ApiLocalStorage.js';
 export function createModal() {
     const modal = document.createElement('div');
     modal.className = 'spa-shell-modal';
+    modal.style.display = ApiLocalStorage.getItem('modalVisible', false) ? 'block' : 'none'; 
+
     const closeButton = document.createElement('button');
     closeButton.textContent = 'Fechar';
     closeButton.style.position = 'absolute';
@@ -14,18 +17,16 @@ export function createModal() {
     closeButton.style.padding = '5px 10px';
     closeButton.style.cursor = 'pointer';
 
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none'; 
-    });
-    closeButton.addEventListener('click', function() {
-        modal.hide();
-        window.location.hash = ''; 
-    });
+    closeButton.addEventListener('click', () => modal.hide());
+    
     modal.show = function() {
         modal.style.display = 'block';
+        ApiLocalStorage.setItem('modalVisible', true);
     };
     modal.hide = function() {
         modal.style.display = 'none';
+        ApiLocalStorage.setItem('modalVisible', false);
+        window.location.hash = ''; 
     };
 
     modal.appendChild(closeButton);
