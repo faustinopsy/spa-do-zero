@@ -51,6 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const shellModal = document.createElement('div');
         shellModal.className = 'spa-shell-modal';
+
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Fechar';
+        closeButton.onclick = function() {
+            shellModal.style.display = 'none'; 
+        };
+        shellModal.appendChild(closeButton);
         spaContainer.appendChild(shellModal);
         spaContainer.appendChild(spaSlider);
 

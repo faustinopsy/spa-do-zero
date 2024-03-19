@@ -120,14 +120,23 @@ background-color : #f00;
  background : red;
  z-index : 1;
 }
+
 .spa-shell-modal {
- margin-top : -200px;
- margin-left : -200px;
- top : 50%;
- left : 50%;
- width : 400px;
- height : 400px;
- background : #fff;
- border-radius : 3px;
- z-index : 2;
-} 
+    position: absolute;
+    margin-top: -200px;
+    margin-left: -200px;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    background: #fff;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.spa-shell-modal button {
+    position: absolute;
+    background-color: #444;
+    top: 10px;
+    right: 10px;
+}
