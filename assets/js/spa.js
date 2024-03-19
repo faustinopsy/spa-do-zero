@@ -5,16 +5,9 @@ import { createModal } from './componentes/spaModal.js';
 import { ApiLocalStorage } from './componentes/ApiLocalStorage.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const configMap = {
-        extendedHeight: 434,
-        extendedTitle: 'Clique para retrair',
-        retractedHeight: 16,
-        retractedTitle: 'Clique para expandir'
-    };
-
     const spaContainer = createSpaContainer('spa');
     createLayoutElements(spaContainer);
-    const spaSlider = createSpaSlider(configMap);
+    const spaSlider = createSpaSlider();
     spaContainer.appendChild(spaSlider);
 
     const modal = createModal();

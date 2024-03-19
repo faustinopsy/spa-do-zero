@@ -21,7 +21,7 @@ export function createLayoutElements(container) {
     container.appendChild(createDivElement('spa-shell-foot'));
     container.appendChild(createDivElement('spa-shell-chat'));
     
-   
+    
     
     return {
         shellHead,
