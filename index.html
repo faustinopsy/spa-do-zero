@@ -29,11 +29,77 @@
     background-color : #f00;
     }
  </style>
- <script type="text/javascript"></script>
+ 
 </head>
 <body>
-    <div id="spa">
-        <div class="spa-slider"></div>
-        </div>
+    <div id="spa"></div>
+<script>
+    // Módulo /spa/
+    var spa = (function () {
+        // Variáveis de escopo do módulo
+        var
+            configMap = {
+                extended_height: 434,
+                extended_title: 'Clique para retrair',
+                retracted_height: 16,
+                retracted_title: 'Clique para expandir',
+                template_html: '<div class="spa-slider"></div>'
+            },
+            chatSlider,
+            toggleSlider, onClickSlider, initModule;
+        
+        // Método DOM /toggleSlider/
+        // alterna a altura do slider
+        toggleSlider = function () {
+            var sliderHeight = chatSlider.offsetHeight;
+            
+            // expande o slider se estiver totalmente retraído
+            if (sliderHeight === configMap.retracted_height) {
+                chatSlider.style.height = configMap.extended_height + 'px';
+                chatSlider.setAttribute('title', configMap.extended_title);
+                return true;
+            }
+            // retrai o slider se estiver totalmente expandido
+            else if (sliderHeight === configMap.extended_height) {
+                chatSlider.style.height = configMap.retracted_height + 'px';
+                chatSlider.setAttribute('title', configMap.retracted_title);
+                return true;
+            }
+            // não toma ação se o slider estiver em transição
+            return false;
+        };
+        
+        // Manipulador de eventos /onClickSlider/
+        // recebe evento de clique e chama toggleSlider
+        onClickSlider = function (event) {
+            toggleSlider();
+            return false;
+        };
+        
+        // Método Público /initModule/
+        // define o estado inicial e fornece a funcionalidade
+        initModule = function (container) {
+            // renderiza HTML
+            container.innerHTML = configMap.template_html;
+            chatSlider = container.querySelector('.spa-slider');
+            
+            // inicializa a altura e o título do slider
+            chatSlider.style.height = configMap.retracted_height + 'px';
+            chatSlider.setAttribute('title', configMap.retracted_title);
+            
+            // vincula o evento de clique do usuário ao manipulador de eventos
+            chatSlider.addEventListener('click', onClickSlider);
+            return true;
+        };
+        
+        return { initModule: initModule };
+    })();
+    
+    // Inicia o SPA uma vez que o DOM está pronto
+    document.addEventListener('DOMContentLoaded', function () {
+        var spaContainer = document.querySelector('#spa');
+        spa.initModule(spaContainer);
+    });
+</script>
 </body>
 </html>
