@@ -189,3 +189,45 @@ background-color : rgba(255, 0, 0, 0);
     border: none;
     border-radius: 3px;
 }
+.spa-navbar {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ccc;
+}
+
+.spa-navbar a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 16px;
+    margin: 2px 0;
+    background: #e7e7e7;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.spa-navbar a:hover {
+    background-color: #ddd;
+}
+.spa-page {
+    margin: auto;
+    max-width: 800px; 
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: white;
+}
+
+.spa-page h2 {
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.spa-page p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
