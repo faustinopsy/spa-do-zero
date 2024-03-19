@@ -17,6 +17,16 @@ export function createModal() {
     closeButton.addEventListener('click', () => {
         modal.style.display = 'none'; 
     });
+    closeButton.addEventListener('click', function() {
+        modal.hide();
+        window.location.hash = ''; 
+    });
+    modal.show = function() {
+        modal.style.display = 'block';
+    };
+    modal.hide = function() {
+        modal.style.display = 'none';
+    };
 
     modal.appendChild(closeButton);
     return modal;

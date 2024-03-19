@@ -20,4 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modal = createModal();
     spaContainer.appendChild(modal);
+
+
+    window.addEventListener('hashchange', function() {
+        if (window.location.hash === '#modal') {
+            modal.show();
+        }
+    });
+
+
+    if (window.location.hash === '#modal') {
+        modal.show();
+    }
 });
